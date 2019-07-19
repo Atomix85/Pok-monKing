@@ -17,16 +17,18 @@ public class Terrain {
         Pokemon pokemonAdv = adversaire.getFirstAlivePokemon();
         Pokemon pokemonMe = me.getFirstAlivePokemon();
 
-        if(pokemonAdv != null && pokemonMe != null)
+        if(pokemonAdv != null)
+        {
+            PokemonBattleRender.makeSprite(trainerPart, pokemonAdv, false);
+        }
+        if(pokemonMe != null)
         {
             PokemonBattleRender.makeSprite(playerPart, pokemonMe, true);
-            PokemonBattleRender.makeSprite(trainerPart, pokemonAdv, false);
-
         }
     }
     public void update()
     {
-        adversaire.updateBattle(trainerPart);
-        me.updateBattle(playerPart);
+        adversaire.updateBattle(trainerPart, me);
+        me.updateBattle(playerPart, adversaire);
     }
 }

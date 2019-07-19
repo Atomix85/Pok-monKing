@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Caterpie : InsectType
+public class Caterpie : Pokemon,IInsectType
 {
 
     public Caterpie(int level) : base("caterpie", level)
     {
+        this.name = "Chenipan";
         setBaseStats();
         setIV();
         setStats();
-
-
+        capacities[0] = CapacitiesRef.tackle.Clone() as Capacity;
+        resistance = EfficientRule.basicTableInsect;
     }
 
     void setBaseStats()

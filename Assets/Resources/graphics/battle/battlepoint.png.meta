@@ -2,7 +2,8 @@ fileFormatVersion: 2
 guid: b63e6fc47a9408543bff7ae496187ba3
 TextureImporter:
   fileIDToRecycleName:
-    21300000: tiles_0
+    21300000: battlepoint
+    21300002: fixbattlepoint
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -40,8 +41,8 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
-  spriteMeshType: 1
+  spriteExtrude: 2
+  spriteMeshType: 0
   alignment: 9
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 96, z: 0, w: 0}
@@ -82,29 +83,41 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tiles_0
+      name: battlepoint
       rect:
         serializedVersion: 2
         x: 0
-        y: 95
+        y: 96
         width: 128
-        height: 33
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -64, y: 16.5}
-        - {x: -64, y: -16.5}
-        - {x: 64, y: -16.5}
-        - {x: 64, y: 16.5}
-      physicsShape:
-      - - {x: -64, y: 16.5}
-        - {x: -64, y: -16.5}
-        - {x: 64, y: -16.5}
-        - {x: 64, y: 16.5}
+      outline: []
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05efa226c71df1c4cb8ef83b360dcd05
+      spriteID: 81fcaf928082af344b79aeb79876f685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fixbattlepoint
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cbc86561003c9b45adfab5740d8b04c
       vertices: []
       indices: 
       edges: []

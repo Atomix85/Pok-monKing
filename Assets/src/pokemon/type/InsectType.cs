@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InsectType : Pokemon
+public interface IInsectType : Type
 {
 
-    public InsectType(string spriteName, int level) : base(spriteName, level)
-    {
-
-    }
+ 
 }

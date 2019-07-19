@@ -7,27 +7,25 @@ public class init : MonoBehaviour {
     public GameObject meTerrain;
 
     Terrain terrain;
-
+    Trainer trainer;
+    PlayerTeam player;
+    float timer = 0;
     // Use this for initialization
     void Start () {
 
-        Trainer trainer = new Trainer("pute");
-        PlayerTeam player = new PlayerTeam("Red");
-        Capacity.initCapacities();
+        trainer = new Trainer("pute");
+        player = new PlayerTeam("Red");
+        CapacitiesRef.initCapacities();
 
-        player.addPokemon(new Mew(70));
-        //trainer.addPokemon(new Caterpie(50));
-        trainer.addPokemon(new Caterpie(3));
+        player.addPokemon(new Haunter(20));
+        trainer.addPokemon(new Mew(100));
+        trainer.addPokemon(new Caterpie(10));
+        trainer.addPokemon(new Charmander(10));
 
-        player.getFirstAlivePokemon().capacities[0].use(
-            player.getFirstAlivePokemon(), trainer.getFirstAlivePokemon());
 
         terrain = new Terrain(trainer,player);
         Terrain.playerPart = meTerrain;
         Terrain.trainerPart = adversaireTerrain;
-
-        terrain.callPokemon();
-        
 
     }
 	
@@ -35,6 +33,19 @@ public class init : MonoBehaviour {
 	void Update () {
 
         terrain.update();
+        if(timer > 2)
+        {
+            timer = 0;
+            if(player.getFirstAlivePokemon() != null
+                && trainer.getFirstAlivePokemon() != null)
+            {
+                player.getFirstAlivePokemon().useCapacity(-1, trainer.getFirstAlivePokemon());
+                //trainer.getFirstAlivePokemon().useCapacity(-1, player.getFirstAlivePokemon());
+            }
+            
+            terrain.callPokemon();
+        }
+        timer += Time.deltaTime;
 
     }
 }

@@ -7,10 +7,12 @@ public class Team {
     string name;
     Pokemon[] pokemons;
     int nbPokemonInTeam;
+    protected bool canPlay;
 
     public Team(string name){
         this.name = name;
         nbPokemonInTeam = 0;
+        canPlay = false;
         pokemons = new Pokemon[6];
     }
     public int addPokemon(Pokemon pokemon)
@@ -33,7 +35,7 @@ public class Team {
         }
         return null; // Aucun pokemon vivant = gameover
     }
-    public virtual void updateBattle(GameObject obj)
+    public virtual void updateBattle(GameObject obj, Team team)
     {
         
     }

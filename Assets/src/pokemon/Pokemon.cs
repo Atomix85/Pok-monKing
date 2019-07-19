@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Pokemon {
+    protected string name;
     protected Stats stats;
     protected Stats baseStats;
     protected Stats IV;
@@ -11,12 +12,21 @@ public class Pokemon {
     protected int life;
 
     public Capacity[] capacities;
+    public EfficientRule resistance;
 
     protected Sprite frontSprite, backSprite;
 
+    public string getName()
+    {
+        return name;
+    }
     public void kill()
     {
         this.life = 0;
+    }
+    public int getLevel()
+    {
+        return level;
     }
     public int getPv()
     {
@@ -24,6 +34,7 @@ public class Pokemon {
     }
     public void setPv(int life)
     {
+        if (life < 0) life = 0;
         this.life = life;
     }
 
@@ -39,6 +50,65 @@ public class Pokemon {
     public Sprite getBackSprite()
     {
         return backSprite;
+    }
+    public void useCapacity(int i, Pokemon target)
+    {
+        if (i == -1)
+            i = getRandomAttack();
+
+        if (i != -1)
+        {
+            if (canUseAttack(i))
+                capacities[i].use(this, target);
+        }
+        else
+        {
+            CapacitiesRef.struggle.use(this, target);
+        }
+       
+    }
+    public int getRandomAttack()
+    {
+        int i = -1;
+        if (canAttack())
+        {
+            while (i == -1)
+            {
+                i = Random.Range(0, 3);
+                if (canUseAttack(i))
+                {
+                    return i;
+                }
+                i = -1;
+            }
+        }
+        return i;
+    }
+    public bool canUseAttack(int i)
+    {
+        try
+        {
+            if (capacities[i] != null && capacities[i].getPP() > 0)
+            {
+                return true;
+            }
+            return false;
+        }catch(System.IndexOutOfRangeException ex)
+        {
+            Debug.Log(capacities[i]);
+        }
+        return false;
+    }
+    public bool canAttack()
+    {
+        for(int i = 0; i < 4; i++)
+        {
+            if(canUseAttack(i))
+            {
+                return true;
+            }
+        }
+        return false;
     }
     
     public Pokemon(string spriteName, int level)

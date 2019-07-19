@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mew : PsyType
+public class Mew : Pokemon, IPsyType
 {
 
     public Mew(int level) : base("mew", level)
     {
+        this.name = "Mew";
         setBaseStats();
         setIV();
         setStats();
 
-        capacities[0] = Capacity.defaultCapacities[0].Clone() as Capacity ;
+        capacities[0] = CapacitiesRef.ancientPower.Clone() as Capacity ;
+        resistance = EfficientRule.basicTablePsy;
     }
 
     void setBaseStats()
